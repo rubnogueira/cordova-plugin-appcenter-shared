@@ -40,7 +40,7 @@ static MSWrapperSdk * wrapperSdk;
 
     MSWrapperSdk* wrapperSdk =
     [[MSWrapperSdk alloc]
-     initWithWrapperSdkVersion:@"0.5.1"
+     initWithWrapperSdkVersion:@"0.5.2"
      wrapperSdkName:@"appcenter.cordova"
      wrapperRuntimeVersion:nil
      liveUpdateReleaseLabel:nil
