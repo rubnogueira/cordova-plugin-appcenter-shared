@@ -15,7 +15,7 @@
 
 + (void) configureWithSettings: (NSDictionary* ) settings;
 
-+ (MSWrapperSdk *) getWrapperSdk;
-+ (void) setWrapperSdk:(MSWrapperSdk *)sdk;
++ (MSACWrapperSdk *) getWrapperSdk;
++ (void) setWrapperSdk:(MSACWrapperSdk *)sdk;
 
 @end

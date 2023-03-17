@@ -9,24 +9,24 @@
 static NSString *appSecret;
 static NSString *logUrl;
 
-static MSWrapperSdk * wrapperSdk;
+static MSACWrapperSdk * wrapperSdk;
 
 + (void) setAppSecret: (NSString *)secret
 {
     appSecret = secret;
-    [MSAppCenter configureWithAppSecret:secret];
+    [MSACAppCenter configureWithAppSecret:secret];
 }
 
 + (void) setUserId: (NSString *)userId
 {
-    [MSAppCenter setUserId:userId];
+    [MSACAppCenter setUserId:userId];
 }
 
 + (NSString *) getAppSecretWithSettings: (NSDictionary*) settings
 {
     if (appSecret == nil) {
         appSecret = [settings cordovaSettingForKey:@"APP_SECRET"];
-        // If the AppSecret is not set, we will pass nil to MSAppCenter which will error out, as expected
+        // If the AppSecret is not set, we will pass nil to MSACAppCenter which will error out, as expected
     }
 
     return appSecret;
@@ -34,12 +34,12 @@ static MSWrapperSdk * wrapperSdk;
 
 + (void) configureWithSettings: (NSDictionary* ) settings
 {
-    if ([MSAppCenter isConfigured]) {
+    if ([MSACAppCenter isConfigured]) {
         return;
     }
 
-    MSWrapperSdk* wrapperSdk =
-    [[MSWrapperSdk alloc]
+    MSACWrapperSdk* wrapperSdk =
+    [[MSACWrapperSdk alloc]
      initWithWrapperSdkVersion:@"0.5.2"
      wrapperSdkName:@"appcenter.cordova"
      wrapperRuntimeVersion:nil
@@ -48,27 +48,27 @@ static MSWrapperSdk * wrapperSdk;
      liveUpdatePackageHash:nil];
 
     [self setWrapperSdk:wrapperSdk];
-    [MSAppCenter configureWithAppSecret:[AppCenterShared getAppSecretWithSettings: settings]];
+    [MSACAppCenter configureWithAppSecret:[AppCenterShared getAppSecretWithSettings: settings]];
 
     NSString *logLevel = [settings cordovaSettingForKey:@"LOG_LEVEL"];
-    MSLogLevel logLevelValue = [logLevel intValue];
-    [MSAppCenter setLogLevel: logLevelValue];
+    MSACLogLevel logLevelValue = [logLevel intValue];
+    [MSACAppCenter setLogLevel: logLevelValue];
     
     logUrl = [settings cordovaSettingForKey:@"LOG_URL"];
     if (logUrl != nil) {
-        [MSAppCenter setLogUrl:logUrl];
+        [MSACAppCenter setLogUrl:logUrl];
     }
 }
 
-+ (MSWrapperSdk *) getWrapperSdk
++ (MSACWrapperSdk *) getWrapperSdk
 {
     return wrapperSdk;
 }
 
-+ (void) setWrapperSdk:(MSWrapperSdk *)sdk
++ (void) setWrapperSdk:(MSACWrapperSdk *)sdk
 {
     wrapperSdk = sdk;
-    [MSAppCenter setWrapperSdk:sdk];
+    [MSACAppCenter setWrapperSdk:sdk];
 }
 
 @end

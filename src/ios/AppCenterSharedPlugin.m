@@ -18,7 +18,7 @@
 - (void)getInstallId:(CDVInvokedUrlCommand *)command
 {
     CDVPluginResult* result = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK
-                                                  messageAsString:[[MSAppCenter installId] UUIDString]];
+                                                  messageAsString:[[MSACAppCenter installId] UUIDString]];
 
     [self.commandDelegate sendPluginResult:result callbackId:command.callbackId];
 }
@@ -26,7 +26,7 @@
 - (void)setUserId:(CDVInvokedUrlCommand *)command
 {
     NSString* userId = [command argumentAtIndex:0 withDefault:nil andClass:[NSString class]];
-    [MSAppCenter setUserId:userId];
+    [MSACAppCenter setUserId:userId];
     
     CDVPluginResult* result = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK];
     [self.commandDelegate sendPluginResult:result

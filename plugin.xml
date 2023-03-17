@@ -40,7 +40,8 @@
                        value="com.microsoft.azure.mobile.cordova.AppCenterSharedPlugin"/>
             </feature>
         </config-file>
-        <framework src="com.microsoft.appcenter:appcenter:2.4.1" />
+        <!-- https://mvnrepository.com/artifact/com.microsoft.appcenter/appcenter -->
+        <framework src="com.microsoft.appcenter:appcenter:5.0.0" />
     </platform>
 
     <platform name="ios">
@@ -60,6 +61,7 @@
                 <source url="https://cdn.cocoapods.org/"/>
             </config>
             <pods use-frameworks="true">
+                <!-- https://cocoapods.org/pods/AppCenter -->
                 <pod name="AppCenter" spec="~> 5.0.2" />
             </pods>
         </podspec>
